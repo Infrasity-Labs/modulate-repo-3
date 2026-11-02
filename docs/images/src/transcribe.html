@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="chat.css"></head><body><div id="window">
+<div class="topbar"><div class="crumb"><span>Velma Agent Tools</span><span class="sep">/</span><span>Transcribe and summarise</span></div><div class="status"><span class="dot"></span> velma MCP connected</div></div>
+<div class="thread">
+<div class="user">Transcribe <code>fixtures/real-2.wav</code>, then summarise <code>fixtures/pii-speech.wav</code>.</div>
+<div class="meta">just now</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>transcribe_audio</b> on real-2.wav</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>analyze_conversation</b> on pii-speech.wav</div>
+<div class="reply">
+<p><b>real-2.wav</b> (12 s, one speaker, English):</p>
+<div class="block">[0.00s] speaker 1: Fables: The North Wind and the Sun.<br>[5.55s] speaker 1: A dispute arose between the North Wind and the Sun, each claiming that he was stronger than the other</div>
+<p><b>pii-speech.wav</b>, conversation analysis:</p>
+<ul>
+<li>Summary: "Jonathan Whitaker provided his phone number and date of birth."</li>
+<li>Conversation type: General Customer Support Call (confidence 0.58).</li>
+<li>Behaviours detected: none.</li>
+</ul>
+<p class="note">The second clip contains made-up personal details. To keep them out of the transcript, run <code>redact_audio</code> first.</p>
+</div></div>
+<div class="composer"><span>Reply</span><span>&#8629;</span></div>
+<div class="foot"><span>+ &nbsp;&#127908;</span><span>AI can make mistakes. Illustration of a real run.</span><span>velma-mcp</span></div>
+</div></body></html>

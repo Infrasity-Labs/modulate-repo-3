@@ -1,0 +1,21 @@
+name: mcp
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: velma-mcp
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --python ${{ matrix.python-version }}
+      - name: Tests (live tests are skipped without VELMA_API_KEY)
+        run: uv run pytest -q

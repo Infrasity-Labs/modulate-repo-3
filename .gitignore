@@ -1,0 +1,13 @@
+.env
+NOTES.md
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+velma-output/
+out/
+results/
+.DS_Store
+# macOS say output: licence of generated audio is unclear, keep it local
+fixtures/synthetic-2.wav

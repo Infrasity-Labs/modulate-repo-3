@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="chat.css"></head><body><div id="window">
+<div class="topbar"><div class="crumb"><span>Velma Agent Tools</span><span class="sep">/</span><span>Is this voice fake?</span></div><div class="status"><span class="dot"></span> velma MCP connected</div></div>
+<div class="thread">
+<div class="user">Is <code>fixtures/synthetic-1.wav</code> a deepfake? Compare it with <code>fixtures/real-2.wav</code>.</div>
+<div class="meta">just now</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>detect_synthetic_voice</b> on synthetic-1.wav</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>detect_synthetic_voice</b> on real-2.wav</div>
+<div class="reply">
+<p>Velma marks the first clip as synthetic and the second as human speech. Frames are 4 second windows.</p>
+<table><tr><th>Clip</th><th>Frames</th><th>Share of speech marked synthetic</th><th>Confidence</th></tr>
+<tr><td><code>synthetic-1.wav</code></td><td><span class="pill syn">3 synthetic</span></td><td>100%</td><td>0.969 to 0.975</td></tr>
+<tr><td><code>real-2.wav</code></td><td><span class="pill hum">3 non-synthetic</span></td><td>0%</td><td>0.912 to 0.922</td></tr></table>
+<p class="note">This is a probability signal, not proof. Confidence is how sure the model is of its verdict, not the chance the clip is fake. The audio was uploaded to Modulate's API for this check.</p>
+</div></div>
+<div class="composer"><span>Reply</span><span>&#8629;</span></div>
+<div class="foot"><span>+ &nbsp;&#127908;</span><span>AI can make mistakes. Illustration of a real run.</span><span>velma-mcp</span></div>
+</div></body></html>

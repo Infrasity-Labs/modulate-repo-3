@@ -1,0 +1,14 @@
+[
+  {"id": 1, "should_trigger": true, "prompt": "Is the voice in fixtures/synthetic-1.wav a deepfake?"},
+  {"id": 2, "should_trigger": true, "prompt": "I got a voicemail from my 'boss' asking for a wire transfer. Can you check whether the recording voicemail.mp3 is an AI voice clone?"},
+  {"id": 3, "should_trigger": true, "prompt": "Check this track for me, I think it was made with Suno: fixtures/music-1.wav. Is it AI-generated music?"},
+  {"id": 4, "should_trigger": true, "prompt": "Remove the names, phone numbers and dates of birth from support-call.wav before I share it with the QA team."},
+  {"id": 5, "should_trigger": true, "prompt": "Transcribe call.wav with speaker labels and tell me the emotion of each speaker."},
+  {"id": 6, "should_trigger": true, "prompt": "Screen every clip in ./clips for synthetic voices and give me a table with the share of synthetic speech per file."},
+  {"id": 7, "should_trigger": true, "prompt": "Use Modulate Velma to summarise this customer call and list the topics: call.wav"},
+  {"id": 8, "should_trigger": true, "prompt": "Redact PII and PHI from patient-dictation.mp3, then transcribe the redacted audio."},
+  {"id": 9, "should_trigger": false, "prompt": "Write a Python function that generates a synthetic dataset of 1000 fake customer records as CSV."},
+  {"id": 10, "should_trigger": false, "prompt": "Explain how a transformer model works in simple terms."},
+  {"id": 11, "should_trigger": false, "prompt": "Use ffmpeg to convert song.flac to mp3 at 192 kbps."},
+  {"id": 12, "should_trigger": false, "prompt": "Redact the email addresses and phone numbers from customers.csv with a regex."}
+]

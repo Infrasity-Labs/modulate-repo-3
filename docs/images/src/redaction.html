@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="chat.css"></head><body><div id="window">
+<div class="topbar"><div class="crumb"><span>Velma Agent Tools</span><span class="sep">/</span><span>Redact a recording</span></div><div class="status"><span class="dot"></span> velma MCP connected</div></div>
+<div class="thread">
+<div class="user">Remove the personal details from <code>fixtures/pii-speech.wav</code> and give me the clean transcript.</div>
+<div class="meta">just now</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>redact_audio</b> on pii-speech.wav</div>
+<div class="reply">
+<p>Done. Velma found a name, a phone number and a date of birth, removed them from the text and silenced them in the audio.</p>
+<div class="block">Hello, my name is <span class="tag">&lt;pii:firstname&gt;&lt;/pii:firstname&gt;</span> <span class="tag">&lt;pii:lastname&gt;&lt;/pii:lastname&gt;</span>.<br>You can reach me on <span class="tag">&lt;pii:phone&gt;&lt;/pii:phone&gt;</span>.<br>My date of birth is the <span class="tag">&lt;pii:date_of_birth&gt;&lt;/pii:date_of_birth&gt;</span></div>
+<ul>
+<li>Silenced ranges: 1.18 to 2.94 s, 3.66 to 8.64 s, 9.68 to 12.96 s.</li>
+<li>Redacted audio saved to <code>velma-output/pii-speech-redacted-9e1cd92e.mp3</code>.</li>
+</ul>
+<p class="note">Redaction is automated and can miss things. Read the transcript and listen to the MP3 before you share it.</p>
+</div></div>
+<div class="composer"><span>Reply</span><span>&#8629;</span></div>
+<div class="foot"><span>+ &nbsp;&#127908;</span><span>AI can make mistakes. Illustration of a real run.</span><span>velma-mcp</span></div>
+</div></body></html>

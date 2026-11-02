@@ -1,0 +1,24 @@
+{
+  "_comment": "Derived from the OpenAPI spec examples, not captured from the live API.",
+  "400": "The uploaded file is empty.",
+  "401": "Invalid API key.",
+  "403": "This API key does not have access to this model.",
+  "413": "The uploaded file is too large.",
+  "422_string": "The audio is too short to analyze.",
+  "422_list": [
+    {
+      "loc": [
+        "body",
+        "upload_file"
+      ],
+      "msg": "Field required",
+      "type": "missing"
+    }
+  ],
+  "429_concurrency": "Concurrent request limit reached. Please retry after your in-flight requests complete.",
+  "429_credits": "Insufficient credits.",
+  "429_monthly": "Monthly usage limit reached.",
+  "500": "Internal server error",
+  "502": "Unable to complete the request. Please try again.",
+  "504": "The request timed out. Please try again."
+}

@@ -1,0 +1,31 @@
+{
+  "_comment": "Derived from the OpenAPI spec examples, not captured from the live API.",
+  "filename": "recording.wav",
+  "duration_ms": 34500,
+  "frames": [
+    {
+      "start_time_ms": 0,
+      "end_time_ms": 3000,
+      "verdict": "synthetic",
+      "confidence": 0.9732
+    },
+    {
+      "start_time_ms": 3000,
+      "end_time_ms": 6000,
+      "verdict": "synthetic",
+      "confidence": 0.8
+    },
+    {
+      "start_time_ms": 6000,
+      "end_time_ms": 9000,
+      "verdict": "non-synthetic",
+      "confidence": 0.6
+    },
+    {
+      "start_time_ms": 9000,
+      "end_time_ms": 12000,
+      "verdict": "no-content",
+      "confidence": 1.0
+    }
+  ]
+}

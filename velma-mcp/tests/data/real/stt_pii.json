@@ -1,0 +1,39 @@
+{
+ "text": "Hello, my name is <pii:firstname>Jonathan</pii:firstname> <pii:lastname>Whitaker</pii:lastname>. You can reach me on <pii:phone>four hundred and fifteen five hundred and fifty-five 0172</pii:phone>. My date of birth is the <pii:date_of_birth>twelfth of March 1984</pii:date_of_birth>",
+ "duration_ms": 12353,
+ "utterances": [
+  {
+   "utterance_uuid": "943da6bd-3543-43ae-b14f-b50fb199e54c",
+   "text": "Hello, my name is <pii:firstname>Jonathan</pii:firstname> <pii:lastname>Whitaker</pii:lastname>.",
+   "start_ms": 0,
+   "duration_ms": 2320,
+   "speaker": 1,
+   "language": "en",
+   "emotion": "Neutral",
+   "accent": "American",
+   "deepfake_score": 0.9709
+  },
+  {
+   "utterance_uuid": "1a6af6b0-2574-4031-a8b6-283575be72fc",
+   "text": "You can reach me on <pii:phone>four hundred and fifteen five hundred and fifty-five 0172</pii:phone>.",
+   "start_ms": 2320,
+   "duration_ms": 5700,
+   "speaker": 1,
+   "language": "en",
+   "emotion": "Unknown",
+   "accent": "American",
+   "deepfake_score": 0.9744
+  },
+  {
+   "utterance_uuid": "000734f3-6075-4233-b000-eca4d1a360e1",
+   "text": "My date of birth is the <pii:date_of_birth>twelfth of March 1984</pii:date_of_birth>",
+   "start_ms": 8020,
+   "duration_ms": 4330,
+   "speaker": 1,
+   "language": "en",
+   "emotion": "Neutral",
+   "accent": "Unknown",
+   "deepfake_score": 0.973
+  }
+ ]
+}

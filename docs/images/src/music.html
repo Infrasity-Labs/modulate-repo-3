@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="chat.css"></head><body><div id="window">
+<div class="topbar"><div class="crumb"><span>Velma Agent Tools</span><span class="sep">/</span><span>Is this music AI-made?</span></div><div class="status"><span class="dot"></span> velma MCP connected</div></div>
+<div class="thread">
+<div class="user">Is <code>fixtures/music-1.wav</code> AI-generated music?</div>
+<div class="meta">just now</div>
+<div class="step"><span class="tri">&#9656;</span> Called <span class="chip">velma</span> <b>detect_ai_music</b> on music-1.wav</div>
+<div class="reply">
+<p>Velma says <span class="pill hum">not-ai-music</span>. The clip is 12 s of a 1920s opera recording.</p>
+<table><tr><th>Layer</th><th>Share of clip</th><th>AI score (0 to 100)</th></tr>
+<tr><td>Vocals</td><td>53.3%</td><td>0.0</td></tr>
+<tr><td>Instrumental</td><td>100%</td><td>1.1 (confidence 0.978)</td></tr></table>
+<p class="note">For contrast, <code>synthetic-1.wav</code> is a text-to-speech clip, not music. It came back <span class="pill syn">ai-vocal-music</span> with a vocal AI score of 97.2, so on speech this endpoint acts as a synthetic-voice flag. Treat all of this as a probability signal, not proof.</p>
+</div></div>
+<div class="composer"><span>Reply</span><span>&#8629;</span></div>
+<div class="foot"><span>+ &nbsp;&#127908;</span><span>AI can make mistakes. Illustration of a real run.</span><span>velma-mcp</span></div>
+</div></body></html>

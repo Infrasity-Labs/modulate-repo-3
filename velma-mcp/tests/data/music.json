@@ -1,0 +1,27 @@
+{
+  "_comment": "Derived from the OpenAPI spec examples, not captured from the live API.",
+  "filename": "my_audio.mp3",
+  "duration_s": 89.28,
+  "primary_verdict": "ai-vocal-music",
+  "vocal_percentage": 87.5,
+  "vocal_ai_percentage": 56.5,
+  "vocal_ai_confidence": 0.89,
+  "instrumental_percentage": 64.3,
+  "instrumental_ai_percentage": 10.5,
+  "instrumental_ai_confidence": 0.95,
+  "silence_percentage": 3.51,
+  "windows": [
+    {
+      "start_time_ms": 0,
+      "end_time_ms": 4000,
+      "vocal_percentage": 100.0,
+      "vocal_ai_probability": 0.97,
+      "vocal_ai_confidence": 0.97,
+      "instrumental_percentage": 79.0,
+      "instrumental_ai_probability": 0.42,
+      "instrumental_ai_confidence": 0.16,
+      "silence_percentage": 0.0
+    }
+  ],
+  "latency_ms": 1333.0
+}

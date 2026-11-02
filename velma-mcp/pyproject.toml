@@ -1,0 +1,34 @@
+[project]
+name = "velma-mcp"
+version = "0.1.0"
+description = "Local MCP server for Modulate's Velma voice AI batch API"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Infrasity Labs" }]
+keywords = ["mcp", "modulate", "velma", "voice", "deepfake", "speech-to-text", "redaction"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+requires-python = ">=3.10"
+dependencies = ["httpx>=0.27", "mcp>=1.12,<2", "python-multipart>=0.0.20"]
+
+[project.scripts]
+velma-mcp = "velma_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/velma_mcp"]
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "respx>=0.21"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

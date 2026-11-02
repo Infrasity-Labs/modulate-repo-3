@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0c0c0d; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+#banner { width: 1600px; height: 420px; position: relative; overflow: hidden; background: radial-gradient(900px 420px at 85% 10%, #2a1b4d 0%, rgba(42,27,77,0) 60%), radial-gradient(700px 400px at 5% 100%, #0f3a3a 0%, rgba(15,58,58,0) 60%), #111114; border-radius: 18px; border: 1px solid #2a2a30; }
+.text { position: absolute; left: 80px; top: 74px; width: 860px; }
+.kicker { color: #7fe0c8; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+h1 { color: #fff; font-size: 82px; line-height: 1.02; margin-top: 14px; font-weight: 700; letter-spacing: -2px; }
+.sub { color: #b9b9c4; font-size: 28px; line-height: 1.4; margin-top: 20px; }
+.chips { display: flex; gap: 12px; margin-top: 30px; }
+.chip { border: 1px solid #3a3a46; background: rgba(255,255,255,0.04); color: #dcdce6; font-size: 20px; padding: 8px 18px; border-radius: 999px; }
+.chip.a { border-color: #3d6f64; color: #8be8d0; }
+.chip.b { border-color: #5b4a93; color: #c3b2ff; }
+.wave { position: absolute; right: 70px; top: 70px; width: 560px; height: 280px; display: flex; align-items: center; gap: 7px; }
+.bar { width: 14px; border-radius: 8px; }
+.nat { background: linear-gradient(#7fe0c8, #3aa58f); }
+.syn { background: linear-gradient(#ffb48a, #ff7a45); }
+.legend { position: absolute; right: 70px; bottom: 44px; display: flex; gap: 26px; color: #a9a9b6; font-size: 19px; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 8px; vertical-align: -1px; }
+</style></head><body><div id="banner">
+<div class="text"><div class="kicker">Agent Skill + MCP server</div><h1>Velma Agent Tools</h1>
+<div class="sub">Let your AI agent check voices for deepfakes, spot AI music, redact personal data and transcribe calls with Modulate's Velma API.</div>
+<div class="chips"><span class="chip a">velma-detect-skill</span><span class="chip b">velma-mcp</span><span class="chip">5 batch endpoints</span></div></div>
+<div class="wave" id="wave"></div>
+<div class="legend"><span><i class="nat"></i>natural speech</span><span><i class="syn"></i>synthetic speech</span></div>
+</div>
+<script>
+const w=document.getElementById('wave');
+const n=40; 
+for(let i=0;i<n;i++){
+  const t=i/n;
+  const env=0.35+0.65*Math.abs(Math.sin(t*Math.PI*3.1+0.6))*(0.55+0.45*Math.sin(t*17+1.2)**2);
+  const h=Math.max(16,Math.round(env*260));
+  const b=document.createElement('div'); b.className='bar '+(i<19?'nat':'syn'); b.style.height=h+'px'; w.appendChild(b);
+}
+</script></body></html>

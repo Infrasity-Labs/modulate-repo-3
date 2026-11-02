@@ -1,0 +1,64 @@
+{
+  "_comment": "Derived from the OpenAPI spec examples, not captured from the live API.",
+  "duration_ms": 45000,
+  "clips": [
+    {
+      "clip_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "text": "Hello everyone.",
+      "start_ms": 0,
+      "duration_ms": 2500,
+      "speaker_label": "1",
+      "language": "en",
+      "emotion": "Neutral",
+      "accent": "American",
+      "deepfake_score": null,
+      "audio_quality": null
+    }
+  ],
+  "model_version": "velma-2-test",
+  "conversation_type_pick": {
+    "conversation_type_uuid": "b1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "Meeting",
+    "confidence": 0.9,
+    "selection_source": "inferred",
+    "detail": "test"
+  },
+  "participant_role_picks": [],
+  "behaviors": [
+    {
+      "behavior_uuid": "c1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "behavior_name": "Greeting",
+      "speaker_label": "1",
+      "detected": true,
+      "confidence": 0.8,
+      "evidence_clip_uuids": [
+        "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      ],
+      "definitive_clip_uuid": null,
+      "reasoning": null,
+      "occurrence_index": 1,
+      "occurrence_count": 1,
+      "truncated": false,
+      "trigger_limit": null
+    },
+    {
+      "behavior_uuid": "d1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "behavior_name": "Interruption",
+      "speaker_label": "1",
+      "detected": false,
+      "confidence": null,
+      "evidence_clip_uuids": [],
+      "definitive_clip_uuid": null,
+      "reasoning": null,
+      "occurrence_index": 1,
+      "occurrence_count": 1,
+      "truncated": false,
+      "trigger_limit": null
+    }
+  ],
+  "topics": [
+    "welcome"
+  ],
+  "topic_sentiments": [],
+  "summary": "Hello everyone. Welcome to the meeting."
+}

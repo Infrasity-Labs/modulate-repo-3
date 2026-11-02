@@ -1,0 +1,21 @@
+name: skill
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "git+https://github.com/agentskills/agentskills#subdirectory=skills-ref"
+      - name: Validate the skill
+        run: skills-ref validate ./velma-detect-skill
+      - name: SKILL.md stays under 500 lines
+        run: test "$(wc -l < velma-detect-skill/SKILL.md)" -lt 500
+      - name: Splitter script compiles
+        run: python -m py_compile velma-detect-skill/scripts/split_redaction.py

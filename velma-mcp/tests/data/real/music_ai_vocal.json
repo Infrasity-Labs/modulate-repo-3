@@ -1,0 +1,48 @@
+{
+ "filename": "synthetic-1.wav",
+ "duration_s": 9.334,
+ "primary_verdict": "ai-vocal-music",
+ "vocal_percentage": 100.0,
+ "vocal_ai_percentage": 97.2,
+ "vocal_ai_confidence": 0.9713,
+ "instrumental_percentage": 0.0,
+ "instrumental_ai_percentage": 1.1,
+ "instrumental_ai_confidence": 0.978,
+ "silence_percentage": 0.0,
+ "windows": [
+  {
+   "start_time_ms": 0,
+   "end_time_ms": 4000,
+   "vocal_percentage": 100.0,
+   "vocal_ai_probability": 0.9707,
+   "vocal_ai_confidence": 0.9707,
+   "instrumental_percentage": 0.0,
+   "instrumental_ai_probability": 0.011,
+   "instrumental_ai_confidence": 0.978,
+   "silence_percentage": 0.0
+  },
+  {
+   "start_time_ms": 4000,
+   "end_time_ms": 8000,
+   "vocal_percentage": 100.0,
+   "vocal_ai_probability": 0.9744,
+   "vocal_ai_confidence": 0.9744,
+   "instrumental_percentage": 0.0,
+   "instrumental_ai_probability": 0.011,
+   "instrumental_ai_confidence": 0.978,
+   "silence_percentage": 0.0
+  },
+  {
+   "start_time_ms": 8000,
+   "end_time_ms": 9334,
+   "vocal_percentage": 100.0,
+   "vocal_ai_probability": 0.9688,
+   "vocal_ai_confidence": 0.9688,
+   "instrumental_percentage": 0.0,
+   "instrumental_ai_probability": 0.011,
+   "instrumental_ai_confidence": 0.978,
+   "silence_percentage": 0.0
+  }
+ ],
+ "latency_ms": 445.4
+}

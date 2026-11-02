@@ -1,0 +1,21 @@
+{
+  "_comment": "Derived from the OpenAPI spec examples, not captured from the live API.",
+  "text": "Hello, my name is <pii:name></pii:name>.",
+  "duration_ms": 5000,
+  "utterances": [
+    {
+      "utterance_uuid": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "text": "Hello, my name is <pii:name></pii:name>.",
+      "start_ms": 0,
+      "duration_ms": 3000,
+      "speaker": 1,
+      "language": "en"
+    }
+  ],
+  "redaction_ranges": [
+    [
+      1600,
+      2400
+    ]
+  ]
+}
