@@ -4,7 +4,7 @@ description: "Detects AI-generated (synthetic, deepfake, cloned) voices and AI-g
 license: MIT
 compatibility: Requires curl and a VELMA_API_KEY environment variable
 metadata:
-  author: Infrasity Labs
+  author: Modulate AI
   version: "0.1.0"
 ---
 

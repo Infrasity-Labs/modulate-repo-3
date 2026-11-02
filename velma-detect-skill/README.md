@@ -117,4 +117,4 @@ skills-ref validate ./velma-detect-skill
 
 ## Licence
 
-MIT. Copyright (c) 2026 Infrasity Labs. See [`LICENSE`](./LICENSE).
+MIT. Copyright (c) 2026 Modulate AI. See [`LICENSE`](./LICENSE).

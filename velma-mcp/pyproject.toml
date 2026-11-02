@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Local MCP server for Modulate's Velma voice AI batch API"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "Infrasity Labs" }]
+authors = [{ name = "Modulate AI" }]
 keywords = ["mcp", "modulate", "velma", "voice", "deepfake", "speech-to-text", "redaction"]
 classifiers = [
   "License :: OSI Approved :: MIT License",

@@ -144,4 +144,4 @@ Most tests use mocked responses. Some data in `tests/data/` is derived from the 
 
 ## Licence
 
-MIT. Copyright (c) 2026 Infrasity Labs. See [`LICENSE`](./LICENSE).
+MIT. Copyright (c) 2026 Modulate AI. See [`LICENSE`](./LICENSE).

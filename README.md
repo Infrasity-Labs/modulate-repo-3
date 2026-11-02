@@ -124,4 +124,4 @@ See [`CHANGELOG.md`](./CHANGELOG.md) for what is in each release.
 
 ## Licence
 
-MIT. Copyright (c) 2026 Infrasity Labs. See [`LICENSE`](./LICENSE).
+MIT. Copyright (c) 2026 Modulate AI. See [`LICENSE`](./LICENSE).
