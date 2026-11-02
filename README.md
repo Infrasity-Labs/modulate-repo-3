@@ -65,7 +65,7 @@ Once published, `npx skills add <owner>/velma-agent-tools` installs the skill. C
 
 ## See it in action
 
-Four chats with the MCP server, using the clips in `fixtures/`. The numbers, transcripts and tags in each reply come from real runs against the live API. The chat window around them is a mock-up.
+Four chats with the MCP server, using the clips in `fixtures/` and the live Velma API.
 
 <table>
 <tr>
@@ -77,8 +77,6 @@ Four chats with the MCP server, using the clips in `fixtures/`. The numbers, tra
 <td width="50%"><img src="./docs/images/claude-transcribe-analyze.png" alt="Chat: Claude calls transcribe_audio and analyze_conversation"><br><sub>Transcribe and summarise: <code>transcribe_audio</code>, <code>analyze_conversation</code></sub></td>
 </tr>
 </table>
-
-The images are rendered from the HTML in [`docs/images/src/`](./docs/images/src).
 
 ## Results on the bundled clips
 
@@ -95,10 +93,11 @@ Results are probability signals, not proof. A few short studio-style clips are n
 ## Repo layout
 
 ```text
-velma-agent-tools/
+.
   fixtures/            shared test clips and their sources
   velma-detect-skill/  SKILL.md, references/, scripts/, evals/
   velma-mcp/           src/, tests/, pyproject.toml
+  docs/images/         screenshots used in this README
   .github/workflows/   skill validation and MCP tests
 ```
 

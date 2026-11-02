@@ -65,7 +65,7 @@ Detection results are probability signals, not proof. Spot-check redacted output
 
 ## In action
 
-The numbers, transcripts and tags in these replies come from real runs against the live API with the clips in `../fixtures/`. The chat window around them is a mock-up.
+These replies come from real runs against the live API with the clips in `../fixtures/`.
 
 ![Chat: deepfake check with detect_synthetic_voice](../docs/images/claude-deepfake-check.png)
 
