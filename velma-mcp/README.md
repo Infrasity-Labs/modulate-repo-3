@@ -8,7 +8,7 @@ Part of [Velma Agent Tools](../README.md). Prefer plain instructions over a runn
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
 [![MCP](https://img.shields.io/badge/MCP-stdio-black.svg)](https://modelcontextprotocol.io)
 
-A local [Model Context Protocol](https://modelcontextprotocol.io) server for [Modulate's Velma](https://docs.modulate.ai) voice AI. It lets MCP clients such as Claude Desktop, Claude Code, Cursor and Windsurf check a recording for deepfake voices or AI music, redact personal data, transcribe, and analyse a conversation.
+A local [Model Context Protocol](https://modelcontextprotocol.io) server for [Modulate's Velma](https://docs.modulate.ai) voice AI. It lets MCP clients such as Cursor and Windsurf check a recording for deepfake voices or AI music, redact personal data, transcribe, and analyse a conversation.
 
 Modulate owns the Velma API and its trademarks. This is an independent client prepared by Infrasity Labs for Modulate.
 
@@ -16,14 +16,14 @@ Modulate owns the Velma API and its trademarks. This is an independent client pr
 
 1. Get a Velma API key: sign up at https://platform.modulate.ai/signup-request, then create a key on the API Keys page. New accounts get free credits.
 2. Install [uv](https://docs.astral.sh/uv/). It needs Python 3.10 or newer.
-3. Add the server to your client. Claude Desktop (`claude_desktop_config.json`), Cursor (`~/.cursor/mcp.json`) and Windsurf (`~/.codeium/windsurf/mcp_config.json`) use the same block:
+3. Add the server to your MCP client. Cursor (`~/.cursor/mcp.json`) and Windsurf (`~/.codeium/windsurf/mcp_config.json`) use the same block:
 
 ```json
 {
   "mcpServers": {
     "velma": {
       "command": "uvx",
-      "args": ["velma-mcp"],
+      "args": ["--from", "git+https://github.com/modulate-ai/velma-agent-tools#subdirectory=velma-mcp", "velma-mcp"],
       "env": {
         "VELMA_API_KEY": "<your-key>",
         "VELMA_MCP_BASE_PATH": "/Users/you/Audio"
@@ -33,13 +33,7 @@ Modulate owns the Velma API and its trademarks. This is an independent client pr
 }
 ```
 
-Claude Code:
-
-```bash
-claude mcp add velma -e VELMA_API_KEY=<your-key> -e VELMA_MCP_BASE_PATH=/Users/you/Audio -- uvx velma-mcp
-```
-
-Before the package is published, run it from a checkout. Replace `"args"` with `["--from", "/absolute/path/velma-agent-tools/velma-mcp", "velma-mcp"]`, or in Claude Code use `-- uvx --from /absolute/path/velma-agent-tools/velma-mcp velma-mcp`. The server name goes before `-e` in `claude mcp add`.
+Working from a checkout instead? Replace `"args"` with `["--from", "/absolute/path/velma-agent-tools/velma-mcp", "velma-mcp"]`. Other clients take the same `command`, `args` and `env` values in their own config format.
 
 ## Example prompts
 
@@ -65,15 +59,15 @@ Detection results are probability signals, not proof. Spot-check redacted output
 
 ## In action
 
-These replies come from real runs against the live API with the clips in `../fixtures/`.
+Example chats illustrated from real runs against the live API with the clips in `../fixtures/`.
 
-![Chat: deepfake check with detect_synthetic_voice](../docs/images/claude-deepfake-check.png)
+![Chat: deepfake check with detect_synthetic_voice](../docs/images/chat-deepfake-check.png)
 
-![Chat: redaction with redact_audio](../docs/images/claude-redact-audio.png)
+![Chat: redaction with redact_audio](../docs/images/chat-redact-audio.png)
 
-![Chat: AI music check with detect_ai_music](../docs/images/claude-ai-music.png)
+![Chat: AI music check with detect_ai_music](../docs/images/chat-ai-music.png)
 
-![Chat: transcribe_audio and analyze_conversation](../docs/images/claude-transcribe-analyze.png)
+![Chat: transcribe_audio and analyze_conversation](../docs/images/chat-transcribe-analyze.png)
 
 ## Example result
 
@@ -135,7 +129,7 @@ Streaming (WebSocket) is not covered yet.
 
 ```bash
 uv sync
-uv run pytest                      # 62 tests, live ones skipped without a key
+uv run pytest                      # live tests are skipped without a key
 VELMA_API_KEY=... uv run pytest    # also runs the live tests against ../fixtures/
 npx @modelcontextprotocol/inspector uvx --from . velma-mcp    # try the tools in a browser
 ```

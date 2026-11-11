@@ -20,7 +20,7 @@ Modulate owns the Velma API and its trademarks. This is an independent integrati
 | What it is | An Agent Skill: `SKILL.md` plus references | A local MCP server in Python |
 | How the agent calls Velma | Runs `curl` from the skill's instructions | Calls typed tools |
 | Runs anything? | No, just instructions | Yes, a local stdio process |
-| Works with | Claude Code, Cursor, Gemini CLI and other skill readers | Claude Desktop, Claude Code, Cursor, Windsurf and other MCP clients |
+| Works with | Cursor, Gemini CLI and other agents that read Agent Skills | Cursor, Windsurf and other MCP clients |
 | Needs | `curl` (`jq` and `ffmpeg` optional) | `uv` and Python 3.10+ |
 | Guards | Safety rules in the instructions | Files readable only under a base folder, key scrubbed from errors |
 
@@ -49,32 +49,70 @@ export VELMA_API_KEY=your-key-here
 2. Install the skill, the MCP server, or both:
 
 ```bash
-# Skill: copy it into your agent's skills folder
-cp -R velma-detect-skill .claude/skills/
-
-# MCP server, from this checkout (use `uvx velma-mcp` once it is published)
-claude mcp add velma -e VELMA_API_KEY=<your-key> -- uvx --from "$PWD/velma-mcp" velma-mcp
+# Skill: installs into your agent's skills folder
+npx skills add modulate-ai/velma-agent-tools
 ```
 
-Once published, `npx skills add <owner>/velma-agent-tools` installs the skill. Config for Claude Desktop, Cursor and Windsurf is in the [MCP README](./velma-mcp/README.md).
+For the MCP server, add this block to your MCP client's config (for example `~/.cursor/mcp.json` or `~/.codeium/windsurf/mcp_config.json`). It needs [uv](https://docs.astral.sh/uv/):
+
+```json
+{
+  "mcpServers": {
+    "velma": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/modulate-ai/velma-agent-tools#subdirectory=velma-mcp", "velma-mcp"],
+      "env": {
+        "VELMA_API_KEY": "<your-key>",
+        "VELMA_MCP_BASE_PATH": "/Users/you/Audio"
+      }
+    }
+  }
+}
+```
+
+Working from a checkout instead? Use `"args": ["--from", "/absolute/path/to/velma-agent-tools/velma-mcp", "velma-mcp"]`. All settings are in the [MCP README](./velma-mcp/README.md).
 
 3. Ask your agent, for example:
    - "Is `fixtures/synthetic-1.wav` a deepfake?"
    - "Redact the names and phone numbers from `fixtures/pii-speech.wav`."
    - "Transcribe `call.wav` with speaker labels and emotion."
 
+## How it works
+
+```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 24, "rankSpacing": 36, "padding": 6, "wrappingWidth": 260, "htmlLabels": true}, "themeVariables": {"fontSize": "13px"}}}%%
+flowchart LR
+    classDef agent fill:#dbeafe,stroke:#2563eb,color:#0f172a
+    classDef local fill:#e5e7eb,stroke:#4b5563,color:#0f172a
+    classDef velma fill:#ede9fe,stroke:#7c3aed,color:#0f172a
+
+    A["<b>Your agent</b><br/>asks about an audio file"]:::agent
+    S["<b>velma-detect-skill</b><br/>instructions, runs curl"]:::local
+    M["<b>velma-mcp</b><br/>typed tools, local stdio"]:::local
+    V["<b>Velma batch API</b><br/>platform.modulate.ai"]:::velma
+    R["<b>Result</b><br/>verdicts, transcript,<br/>redacted MP3"]:::agent
+
+    A --> S
+    A --> M
+    S -->|"POST upload_file<br/>X-API-Key"| V
+    M -->|"POST upload_file<br/>X-API-Key"| V
+    V --> R
+```
+
+Pick the skill or the server, or use both. Blue steps are the agent, grey steps run on your machine, purple is Modulate's API. Both paths send the same requests to the same five endpoints, and the API key stays on your machine. The MCP server also limits which local files can be read to `VELMA_MCP_BASE_PATH` and saves redacted audio to a file, an MCP resource, or both.
+
 ## See it in action
 
-Four chats with the MCP server, using the clips in `fixtures/` and the live Velma API.
+Four example chats with the MCP server, illustrated from real runs against the live Velma API with the clips in `fixtures/`.
 
 <table>
 <tr>
-<td width="50%"><img src="./docs/images/claude-deepfake-check.png" alt="Chat: Claude calls detect_synthetic_voice on a text-to-speech clip and a human clip and compares the verdicts"><br><sub>Deepfake check: <code>detect_synthetic_voice</code></sub></td>
-<td width="50%"><img src="./docs/images/claude-redact-audio.png" alt="Chat: Claude calls redact_audio and shows the transcript with the name, phone number and date of birth removed"><br><sub>Redaction: <code>redact_audio</code></sub></td>
+<td width="50%"><img src="./docs/images/chat-deepfake-check.png" alt="Chat: the agent calls detect_synthetic_voice on a text-to-speech clip and a human clip and compares the verdicts"><br><sub>Deepfake check: <code>detect_synthetic_voice</code></sub></td>
+<td width="50%"><img src="./docs/images/chat-redact-audio.png" alt="Chat: the agent calls redact_audio and shows the transcript with the name, phone number and date of birth removed"><br><sub>Redaction: <code>redact_audio</code></sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="./docs/images/claude-ai-music.png" alt="Chat: Claude calls detect_ai_music on an opera recording and gets not-ai-music"><br><sub>AI music check: <code>detect_ai_music</code></sub></td>
-<td width="50%"><img src="./docs/images/claude-transcribe-analyze.png" alt="Chat: Claude calls transcribe_audio and analyze_conversation"><br><sub>Transcribe and summarise: <code>transcribe_audio</code>, <code>analyze_conversation</code></sub></td>
+<td width="50%"><img src="./docs/images/chat-ai-music.png" alt="Chat: the agent calls detect_ai_music on an opera recording and gets not-ai-music"><br><sub>AI music check: <code>detect_ai_music</code></sub></td>
+<td width="50%"><img src="./docs/images/chat-transcribe-analyze.png" alt="Chat: the agent calls transcribe_audio and analyze_conversation"><br><sub>Transcribe and summarise: <code>transcribe_audio</code>, <code>analyze_conversation</code></sub></td>
 </tr>
 </table>
 
@@ -95,7 +133,7 @@ Results are probability signals, not proof. A few short studio-style clips are n
 ```text
 .
   fixtures/            shared test clips and their sources
-  velma-detect-skill/  SKILL.md, references/, scripts/, evals/
+  velma-detect-skill/  SKILL.md, references/, scripts/, evals/ (trigger prompts)
   velma-mcp/           src/, tests/, pyproject.toml
   docs/images/         screenshots used in this README
   .github/workflows/   skill validation and MCP tests
@@ -105,7 +143,6 @@ Results are probability signals, not proof. A few short studio-style clips are n
 
 ```bash
 skills-ref validate ./velma-detect-skill        # skill format check
-./velma-detect-skill/evals/run_trigger_eval.sh  # 12 trigger prompts, needs the claude CLI
 cd velma-mcp && uv run pytest                   # live tests run only with VELMA_API_KEY set
 ```
 

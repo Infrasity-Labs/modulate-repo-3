@@ -50,7 +50,10 @@ def test_symlink_escape_and_inside_link(tmp_path):
     base = tmp_path / "base"
     base.mkdir()
     target = make(tmp_path, "secret.wav")
-    (base / "link.wav").symlink_to(target)
+    try:
+        (base / "link.wav").symlink_to(target)
+    except OSError:
+        pytest.skip("creating symlinks needs extra privileges on this OS (for example Windows without developer mode)")
     with pytest.raises(ToolError, match="outside"):
         resolve_input("link.wav", base, WIDE_EXTENSIONS)
     inside = make(base, "real.wav")

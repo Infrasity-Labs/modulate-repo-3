@@ -65,7 +65,7 @@ If `speech_frames` is 0, report "inconclusive: no speech found".
 
 ## How to word the result
 
-Wording templates (the numbers are placeholders, fill in the real ones):
+Example wording (use the real numbers from the result, not these):
 
 Good:
 - "7 of 8 speech frames (88 percent of speech time) were marked synthetic, with confidence from 0.81 to 0.99. This is a probability signal, not proof."
