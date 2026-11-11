@@ -21,12 +21,13 @@ Or copy the folder by hand into your agent's skills directory:
 
 | Agent | Project path | Status |
 | - | - | - |
+| [Claude Code](https://claude.ai/code) | `.claude/skills/velma-detect-skill/` | Tested |
 | [Cursor](https://cursor.com) | `.cursor/skills/velma-detect-skill/` | Same format, not tested here |
 | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | `.gemini/skills/velma-detect-skill/` | Same format, not tested here |
 
 Any other agent that reads [Agent Skills](https://agentskills.io/specification) and can run `curl` should work. The skill passes `skills-ref validate` (see below).
 
-Manual copy: `git clone https://github.com/modulate-ai/velma-agent-tools && cp -R velma-agent-tools/velma-detect-skill <your agent's skills directory>/`
+Manual copy: `git clone https://github.com/modulate-ai/velma-agent-tools && cp -R velma-agent-tools/velma-detect-skill .claude/skills/` (use your agent's skills directory from the table).
 
 ## Requirements
 
@@ -90,7 +91,7 @@ Four short studio-style clips are not a benchmark. Do not tune thresholds on the
 - `SKILL.md`: decision tree, one curl per endpoint, how to read scores, input rules, errors, safety. Under 500 lines.
 - `references/`: one file per endpoint plus errors and limits. Loaded only when needed.
 - `scripts/split_redaction.py`: splits the multipart redaction reply into `metadata.json` and `redacted.mp3`.
-- `evals/trigger_prompts.json`: 12 prompts (8 should load the skill, 4 should not). Paste each into a fresh agent session with the skill installed and check whether the skill is loaded.
+- `evals/`: 12 trigger prompts in `trigger_prompts.json` (8 should load the skill, 4 should not) and `run_trigger_eval.sh`, a runner for Claude Code.
 
 ## Limits
 
@@ -105,6 +106,7 @@ Four short studio-style clips are not a benchmark. Do not tune thresholds on the
 ```bash
 pip install "git+https://github.com/agentskills/agentskills#subdirectory=skills-ref"
 skills-ref validate ./velma-detect-skill
+./evals/run_trigger_eval.sh    # needs the claude CLI, jq and a Claude login
 ```
 
 ## Links

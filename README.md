@@ -20,7 +20,7 @@ Modulate owns the Velma API and its trademarks. This is an independent integrati
 | What it is | An Agent Skill: `SKILL.md` plus references | A local MCP server in Python |
 | How the agent calls Velma | Runs `curl` from the skill's instructions | Calls typed tools |
 | Runs anything? | No, just instructions | Yes, a local stdio process |
-| Works with | Cursor, Gemini CLI and other agents that read Agent Skills | Cursor, Windsurf and other MCP clients |
+| Works with | Claude Code, Cursor, Gemini CLI and other agents that read Agent Skills | Claude Desktop, Claude Code, Cursor, Windsurf and other MCP clients |
 | Needs | `curl` (`jq` and `ffmpeg` optional) | `uv` and Python 3.10+ |
 | Guards | Safety rules in the instructions | Files readable only under a base folder, key scrubbed from errors |
 
@@ -53,7 +53,7 @@ export VELMA_API_KEY=your-key-here
 npx skills add modulate-ai/velma-agent-tools
 ```
 
-For the MCP server, add this block to your MCP client's config (for example `~/.cursor/mcp.json` or `~/.codeium/windsurf/mcp_config.json`). It needs [uv](https://docs.astral.sh/uv/):
+For the MCP server, add this block to your MCP client's config: `claude_desktop_config.json` for Claude Desktop, `~/.cursor/mcp.json` for Cursor, `~/.codeium/windsurf/mcp_config.json` for Windsurf. It needs [uv](https://docs.astral.sh/uv/):
 
 ```json
 {
@@ -70,7 +70,13 @@ For the MCP server, add this block to your MCP client's config (for example `~/.
 }
 ```
 
-Working from a checkout instead? Use `"args": ["--from", "/absolute/path/to/velma-agent-tools/velma-mcp", "velma-mcp"]`. All settings are in the [MCP README](./velma-mcp/README.md).
+Claude Code takes the same server as one command:
+
+```bash
+claude mcp add velma -e VELMA_API_KEY=<your-key> -e VELMA_MCP_BASE_PATH=/Users/you/Audio -- uvx --from "git+https://github.com/modulate-ai/velma-agent-tools#subdirectory=velma-mcp" velma-mcp
+```
+
+Working from a checkout instead? Use `"args": ["--from", "/absolute/path/to/velma-agent-tools/velma-mcp", "velma-mcp"]` in the JSON, or `-- uvx --from /absolute/path/to/velma-agent-tools/velma-mcp velma-mcp` in Claude Code. All settings are in the [MCP README](./velma-mcp/README.md).
 
 3. Ask your agent, for example:
    - "Is `fixtures/synthetic-1.wav` a deepfake?"

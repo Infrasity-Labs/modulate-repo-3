@@ -8,7 +8,7 @@ velma-detect-skill
 - One skill covering deepfake detection, AI music detection, PII/PHI redaction, transcription and conversation analysis with `curl`.
 - References for each endpoint, plus errors and limits.
 - `scripts/split_redaction.py` to split the multipart redaction reply.
-- 12 trigger prompts (8 should load the skill, 4 should not) in `evals/trigger_prompts.json`.
+- 12 trigger prompts (8 should load the skill, 4 should not) and a Claude Code runner.
 
 velma-mcp
 - Five tools: `detect_synthetic_voice`, `detect_ai_music`, `redact_audio`, `transcribe_audio`, `analyze_conversation`.

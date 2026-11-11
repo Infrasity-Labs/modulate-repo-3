@@ -8,7 +8,7 @@ Part of [Velma Agent Tools](../README.md). Prefer plain instructions over a runn
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
 [![MCP](https://img.shields.io/badge/MCP-stdio-black.svg)](https://modelcontextprotocol.io)
 
-A local [Model Context Protocol](https://modelcontextprotocol.io) server for [Modulate's Velma](https://docs.modulate.ai) voice AI. It lets MCP clients such as Cursor and Windsurf check a recording for deepfake voices or AI music, redact personal data, transcribe, and analyse a conversation.
+A local [Model Context Protocol](https://modelcontextprotocol.io) server for [Modulate's Velma](https://docs.modulate.ai) voice AI. It lets MCP clients such as Claude Desktop, Claude Code, Cursor and Windsurf check a recording for deepfake voices or AI music, redact personal data, transcribe, and analyse a conversation.
 
 Modulate owns the Velma API and its trademarks. This is an independent client prepared by Infrasity Labs for Modulate.
 
@@ -16,7 +16,7 @@ Modulate owns the Velma API and its trademarks. This is an independent client pr
 
 1. Get a Velma API key: sign up at https://platform.modulate.ai/signup-request, then create a key on the API Keys page. New accounts get free credits.
 2. Install [uv](https://docs.astral.sh/uv/). It needs Python 3.10 or newer.
-3. Add the server to your MCP client. Cursor (`~/.cursor/mcp.json`) and Windsurf (`~/.codeium/windsurf/mcp_config.json`) use the same block:
+3. Add the server to your MCP client. Claude Desktop (`claude_desktop_config.json`), Cursor (`~/.cursor/mcp.json`) and Windsurf (`~/.codeium/windsurf/mcp_config.json`) use the same block:
 
 ```json
 {
@@ -33,7 +33,15 @@ Modulate owns the Velma API and its trademarks. This is an independent client pr
 }
 ```
 
-Working from a checkout instead? Replace `"args"` with `["--from", "/absolute/path/velma-agent-tools/velma-mcp", "velma-mcp"]`. Other clients take the same `command`, `args` and `env` values in their own config format.
+Claude Code:
+
+```bash
+claude mcp add velma -e VELMA_API_KEY=<your-key> -e VELMA_MCP_BASE_PATH=/Users/you/Audio -- uvx --from "git+https://github.com/modulate-ai/velma-agent-tools#subdirectory=velma-mcp" velma-mcp
+```
+
+Working from a checkout instead? Replace `"args"` with `["--from", "/absolute/path/velma-agent-tools/velma-mcp", "velma-mcp"]`, or in Claude Code use `-- uvx --from /absolute/path/velma-agent-tools/velma-mcp velma-mcp`. In `claude mcp add`, put the server name before the `-e` flags. Other clients take the same `command`, `args` and `env` values in their own config format.
+
+The server runs locally as a stdio process that your client starts, so nothing needs to be hosted.
 
 ## Example prompts
 
